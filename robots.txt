@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://ronert.github.io/sitemap.xml 
+Sitemap: http://ronert-obst.com/sitemap.xml 

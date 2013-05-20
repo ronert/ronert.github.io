@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Otopress, | Everything Counts]]></title>
+  <link href="http://ronert-obst.com/blog/categories/otopress/atom.xml" rel="self"/>
+  <link href="http://ronert-obst.com/"/>
+  <updated>2013-05-20T14:50:40+02:00</updated>
+  <id>http://ronert-obst.com/</id>
+  <author>
+    <name><![CDATA[Ronert Obst]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up Octopress with Org-Mode]]></title>
+    <link href="http://ronert-obst.com/blog/2013/05/17/setting-up-octopress-with-org-mode/"/>
+    <updated>2013-05-17T11:36:00+02:00</updated>
+    <id>http://ronert-obst.com/blog/2013/05/17/setting-up-octopress-with-org-mode</id>
+    <content type="html"><![CDATA[<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+
+<p><a href="http://octopress.org/">Octopress</a> is an awesome static blog generator based on <a href="https://github.com/mojombo/jekyll">Jekyll</a>, which I
+use for this site. Setting it up to work smoothly entirely from Emacs
+(the most mind-blowing text editor in the world) with org-mode can be a bit
+tricky. This is how I did it.
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Installing Octopress</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>Octopress has a nice <a href="http://octopress.org/docs/setup/">setup guide</a>, which you should follow. The only hurdle
+I encountered, was setting up rbenv with homebrew under OS X. First,
+install <code>rbenv</code>:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="nv">$ </span>brew update
+</span><span class='line'>  <span class="nv">$ </span>brew install rbenv
+</span><span class='line'>  <span class="nv">$ </span>brew install ruby-build
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Then install Ruby 1.9.3:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="nv">$ </span>rbenv install 1.9.3-p194
+</span><span class='line'>  <span class="nv">$ </span>rbenv rehash
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+The tricky part is that you have to add <code>rbenv</code> to your path by appending
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>~/.rbenv/shims:<span class="nv">$PATH</span>
+</span><span class='line'>  <span class="k">if </span>which rbenv &amp;gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>; <span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+to your <code>.zshrc</code> or <code>.bashrc</code>. Now check wether <code>ruby --version</code> is 1.9.3.
+</p>
+<p>
+Finally, I installed the <a href="http://zespia.tw/Octopress-Theme-Slash/">Slash</a> theme with no changes to the defaults.
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Configuring Org-Mode</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>Now it is time to configure org-mode for exporting to
+Octopress. Install the <a href="https://github.com/craftkiller/orgmode-octopress">org-mode octopress exporter</a> and follow the
+instructions from <a href="http://blog.paphus.com/blog/2012/08/01/introducing-octopress-blogging-for-org-mode/">here</a>. But we are not done yet, the workflow is still
+far too cumbersum: You need to move posts manually and open them im
+org-mode. That is not the true Emacs style! Luckily, Xu Zhiqiang
+made some <a href="http://blog.xeonxu.info/blog/2012/09/05/you-hua-shi-yong-orgmodefa-bu-octopressde-fang-fa/">modifications</a> to automate this workflow. Edit the Rakefile, adding
+an editor variable:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="n">deploy_dir</span>      <span class="o">=</span> <span class="s2">&quot;_deploy&quot;</span>   <span class="c1"># deploy directory (for Github pages deployment)</span>
+</span><span class='line'> <span class="n">stash_dir</span>       <span class="o">=</span> <span class="s2">&quot;_stash&quot;</span>    <span class="c1"># directory to stash posts for speedy generation</span>
+</span><span class='line'> <span class="n">posts_dir</span>       <span class="o">=</span> <span class="s2">&quot;_posts&quot;</span>    <span class="c1"># directory for blog files</span>
+</span><span class='line'> <span class="n">org_posts_dir</span>   <span class="o">=</span> <span class="s2">&quot;org_posts&quot;</span>
+</span><span class='line'> <span class="n">themes_dir</span>      <span class="o">=</span> <span class="s2">&quot;.themes&quot;</span>   <span class="c1"># directory for blog files</span>
+</span><span class='line'> <span class="n">new_post_ext</span>    <span class="o">=</span> <span class="s2">&quot;org&quot;</span>  <span class="c1"># default new post file extension when using the new_post task</span>
+</span><span class='line'> <span class="n">new_page_ext</span>    <span class="o">=</span> <span class="s2">&quot;markdown&quot;</span>  <span class="c1"># default new page file extension when using the new_page task</span>
+</span><span class='line'> <span class="n">server_port</span>     <span class="o">=</span> <span class="s2">&quot;4000&quot;</span>      <span class="c1"># port for preview server eg. localhost:4000</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">editor</span> <span class="o">=</span><span class="s2">&quot;~/bin/em&quot;</span> <span class="c1"># Emacs wrapper</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+and make a script in your path like so:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="c">#!/bin/bash</span>
+</span><span class='line'>  /Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n -a <span class="s2">&quot;/Applications/Emacs.app/Contents/MacOS/Emacs&quot;</span> <span class="nv">$1</span> &amp;gt; /dev/null 2&amp;gt;&amp;amp;1 &amp;amp;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Make the following modifications to your Rakefile, so Octopress
+recognizes your <code>org_posts_dir</code>. In the <code>task :install, :theme do |t, args|</code> statement add the <code>org_posts_dir</code> statement.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">theme</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">theme</span> <span class="o">||</span> <span class="s1">&#39;classic&#39;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;## Copying &quot;</span><span class="o">+</span><span class="n">theme</span><span class="o">+</span><span class="s2">&quot; theme into ./</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2"> and ./sass&quot;</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="n">source_dir</span>
+</span><span class='line'>  <span class="n">cp_r</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">themes_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">theme</span><span class="si">}</span><span class="s2">/source/.&quot;</span><span class="p">,</span> <span class="n">source_dir</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="s2">&quot;sass&quot;</span>
+</span><span class='line'>  <span class="n">cp_r</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">themes_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">theme</span><span class="si">}</span><span class="s2">/sass/.&quot;</span><span class="p">,</span> <span class="s2">&quot;sass&quot;</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">org_posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="n">public_dir</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+In the <code>task :new_post, :title do |t, args|</code> also insert <code>org_posts_dir</code>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">task</span> <span class="ss">:new_post</span><span class="p">,</span> <span class="ss">:title</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span>
+</span><span class='line'>   <span class="k">raise</span> <span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span> <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class='line'>   <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>   <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">org_posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>   <span class="n">args</span><span class="o">.</span><span class="n">with_defaults</span><span class="p">(</span><span class="ss">:title</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;new-post&#39;</span><span class="p">)</span>
+</span><span class='line'>   <span class="n">title</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>   <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">org_posts_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">title</span><span class="o">.</span><span class="n">to_url</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="n">new_post_ext</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>   <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span><span class='line'>     <span class="nb">abort</span><span class="p">(</span><span class="s2">&quot;rake aborted!&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">ask</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> already exists. Do you want to overwrite?&quot;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="o">]</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span>
+</span><span class='line'>   <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+In order to open up Emacs and visit a new post immediately after creating it, we need to add the following editing statement to <code>new_post</code>:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">desc</span> <span class="s2">&quot;Begin a new post in </span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">org_posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:new_post</span><span class="p">,</span> <span class="ss">:title</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="s2">&quot;### You haven&#39;t set anything up yet. First run `rake install` to set up an Octopress theme.&quot;</span> <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">mkdir_p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">org_posts_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">args</span><span class="o">.</span><span class="n">with_defaults</span><span class="p">(</span><span class="ss">:title</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s1">&#39;new-post&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">title</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">title</span>
+</span><span class='line'>  <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">org_posts_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">title</span><span class="o">.</span><span class="n">to_url</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="n">new_post_ext</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">abort</span><span class="p">(</span><span class="s2">&quot;rake aborted!&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">ask</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> already exists. Do you want to overwrite?&quot;</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="o">]</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Creating new post: </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;#+BEGIN_HTML&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;---&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;layout: post&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;title: </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">title</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;amp;/</span><span class="p">,</span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;date: </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d %H:%M&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;comments: true&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;categories: &quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;---&quot;</span>
+</span><span class='line'>    <span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;#+END_HTML&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">if</span> <span class="c1">#{editor}</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;sleep 1; </span><span class="si">#{</span><span class="n">editor</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Add the same editing statement to <code>new_page</code>:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">if</span>  <span class="c1"># {editor}</span>
+</span><span class='line'>    <span class="nb">system</span>  <span class="s2">&quot;sleep 1; # { editor }  # { file } &quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+The wise Xu Zhiqiang adds a statement to automatically open a new browser tab at <code>http://localhost:4000</code> when you <code>rake preview</code> your blog. Append this to the <code>preview</code> command in the Rakefile:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="nb">system</span> <span class="s2">&quot;sleep 2; open http://localhost:</span><span class="si">#{</span><span class="n">server_port</span><span class="si">}</span><span class="s2">/&quot;</span>
+</span><span class='line'>   <span class="o">[</span><span class="n">jekyllPid</span><span class="p">,</span> <span class="n">compassPid</span><span class="p">,</span> <span class="n">rackupPid</span><span class="o">].</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">pid</span><span class="o">|</span> <span class="no">Process</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Now you can run <code>rake new post["title"]</code> and an <code>.org</code> file is created
+in the <code>org_posts_dir</code> which then opens in Emacs. Once you finish
+editing it, just run <code>M-x save-then-publish</code> and close the frame with
+<code>C-x 5 0</code>. When you run <code>rake generate &amp;&amp; rake preview</code>, a browser tab
+opens with your new post. Nice!
+</p></div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Final Workflow</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>But still too cumbersome for me: I added two aliases and a function to
+my .zshrc to streamline this workflow for me:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>  <span class="c"># create new post with octopress and emacs</span>
+</span><span class='line'>  post<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      rake new_post<span class="se">\[</span><span class="s2">&quot;$1&quot;</span><span class="se">\]</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">alias </span><span class="nv">preview</span><span class="o">=</span><span class="s2">&quot;rake generate &amp;amp;&amp;amp; rake preview&quot;</span>
+</span><span class='line'>  <span class="nb">alias </span><span class="nv">deploy</span><span class="o">=</span><span class="s2">&quot;rake deploy&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Now I just enter <code>post title</code> and Emacs pops up with a new post, ready
+for editing. Once I am done, I run <code>preview</code> and Chrome opens. When I
+am happy with the post, I simply <code>deploy</code> and I am done. Now this is
+the true Emacs way.
+</p></div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Seting up MathJax</h2>
+<div class="outline-text-2" id="text-5">
+
+<p>Finally I set up <a href="http://www.mathjax.org/">Mathjax</a> for writing equations in otopress, because
+every true stats geek needs to write impressive equations.
+\[
+\prod \limits_{i=1}^{n+1}i = 1\cdot 2\cdot\dots\cdot n\cdot (n+1)
+\]
+
+I used the instructions from <a href="http://drz.ac/2013/01/03/blogging-with-math/">here</a> and <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">here</a>. First, install <a href="http://kramdown.rubyforge.org/">kramdown</a>
+and use it instead of rdiscount, since it supports LaTeX out of the
+box:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install kramdown
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Now open <code>_config.yml</code> and change <code>rdiscount</code> to <code>kramdown</code>. Do the same in your
+<code>Gemfile</code>.
+Open up <code>./source/_includes/custom/head.html</code> and append
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>  <span class="c">&lt;!--- MathJax Configuration --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://ronert-obst.com/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Of course chage <code>ronert-obst.com</code> to your url. Now place your custom Mathjax preferences in <code>source/javascript/</code>.
+I used the <a href="http://drz.ac/javascripts/MathJaxLocal.js">custom preferences</a> from <a href="http://drz.ac/2013/01/03/blogging-with-math/">here</a>, they seem pretty good for my purposes. Note that you have to specify
+the path to your preferences in the <code>MathJaxLocal.js</code> file. There is a right-click bug with MathJax
+in Octopress. You can easily fix this by changing
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>  <span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>      <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">div</span> <span class="err">{</span>
+</span><span class='line'>          <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="n">sidebar</span><span class="o">-</span><span class="n">bg</span> <span class="err">$</span><span class="n">noise</span><span class="o">-</span><span class="n">bg</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+to
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>  <span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>      <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">div</span><span class="m">#main</span> <span class="err">{</span>
+</span><span class='line'>          <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="n">sidebar</span><span class="o">-</span><span class="n">bg</span> <span class="err">$</span><span class="n">noise</span><span class="o">-</span><span class="n">bg</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+in <code>sass/base/_theme.scss</code>. Now you are all set!
+</p></div>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

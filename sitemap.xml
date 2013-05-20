@@ -2,7 +2,11 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://ronert-obst.com/blog/2013/05/17/weekly-linkfest-17-dot-9-2013/</loc>
-        <lastmod>2013-05-17T11:34:15+02:00</lastmod>
+        <lastmod>2013-05-17T16:36:52+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ronert-obst.com/blog/2013/05/17/setting-up-octopress-with-org-mode/</loc>
+        <lastmod>2013-05-20T14:50:33+02:00</lastmod>
     </url>
     <url>
         <loc>http://ronert-obst.com/about/</loc>
@@ -10,11 +14,11 @@
     </url>
     <url>
         <loc>http://ronert-obst.com/blog/archives/</loc>
-        <lastmod>2013-05-17T11:34:15+02:00</lastmod>
+        <lastmod>2013-05-20T14:50:33+02:00</lastmod>
     </url>
     <url>
         <loc>http://ronert-obst.com/</loc>
-        <lastmod>2013-05-17T11:34:15+02:00</lastmod>
+        <lastmod>2013-05-20T14:50:33+02:00</lastmod>
     </url>
     <url>
         <loc>http://ronert-obst.com/robots.txt</loc>

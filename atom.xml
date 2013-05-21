@@ -4,7 +4,7 @@
   <title><![CDATA[Everything Counts]]></title>
   <link href="http://ronert-obst.com/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-05-20T14:50:40+02:00</updated>
+  <updated>2013-05-21T10:58:15+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -337,10 +337,10 @@ in <code>sass/base/_theme.scss</code>. Now you are all set!
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Weekend Linkfest 17.9.2013]]></title>
-    <link href="http://ronert-obst.com/blog/2013/05/17/weekly-linkfest-17-dot-9-2013/"/>
+    <title type="html"><![CDATA[Weekend Linkfest 17.5.2013]]></title>
+    <link href="http://ronert-obst.com/blog/2013/05/17/weekly-linkfest-17-dot-5-2013/"/>
     <updated>2013-05-17T10:39:00+02:00</updated>
-    <id>http://ronert-obst.com/blog/2013/05/17/weekly-linkfest-17-dot-9-2013</id>
+    <id>http://ronert-obst.com/blog/2013/05/17/weekly-linkfest-17-dot-5-2013</id>
     <content type="html"><![CDATA[<div id="outline-container-1" class="outline-2">
 <h2 id="sec-1">Statistics and Machine Learning</h2>
 <div class="outline-text-2" id="text-1">

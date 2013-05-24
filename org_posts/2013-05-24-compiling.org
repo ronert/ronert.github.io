@@ -38,7 +38,7 @@ R carry out a large matrix multiplication (10000 rows and 5000
 columns). Click [[https://gist.github.com/ronert/5645691][here to view the benchmark script.]] I ran the tests on
 an Intel Core i5 clocked at 2.9 GHz with 16 GB RAM.
 * Results
-#+TITLE: Elapsed time in seconds for various R builds and benchmarks under OS X
+Elapsed time in seconds for various R builds and benchmarks under OS X:
 | R 3.01                           | Bench. 2.5 | Bench. 2.5 mclapply | Matrix mult. |
 |----------------------------------+------------+---------------------+--------------|
 | CRAN OS X .pkg                   |    421.839 | 154.851             |      406.383 |

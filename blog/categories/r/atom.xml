@@ -4,7 +4,7 @@
   <title><![CDATA[Category: R | Everything Counts]]></title>
   <link href="http://ronert-obst.com/blog/categories/r/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-05-24T22:44:36+02:00</updated>
+  <updated>2013-05-24T22:56:55+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -81,7 +81,8 @@ an Intel Core i5 clocked at 2.9 GHz with 16 GB RAM.
 <h2 id="sec-3">Results</h2>
 <div class="outline-text-2" id="text-3">
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<p>Elapsed time in seconds for various R builds and benchmarks under OS X
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption />
 <colgroup><col class="left" /><col class="right" /><col class="left" /><col class="right" />
 </colgroup>

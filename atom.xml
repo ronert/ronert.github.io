@@ -4,7 +4,7 @@
   <title><![CDATA[Everything Counts]]></title>
   <link href="http://ronert-obst.com/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-05-21T10:58:15+02:00</updated>
+  <updated>2013-05-24T22:18:48+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Compiling R from Source with OpenMP, Accelerate and MKL in OS X]]></title>
+    <link href="http://ronert-obst.com/blog/2013/05/24/compiling/"/>
+    <updated>2013-05-24T12:47:00+02:00</updated>
+    <id>http://ronert-obst.com/blog/2013/05/24/compiling</id>
+    <content type="html"><![CDATA[<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Compiling R from Source in OS X</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>I set out to find out whether I could speed up R by compiling it from source and:
+</p><ul>
+<li>using Apple´s <a href="https://developer.apple.com/performance/accelerateframework.html">Accelerate Framework</a>
+</li>
+<li>enabling <a href="http://openmp.org/wp/">OpenMP</a> (which is disabled under OS X and Windows by default, but enabled under Linux)
+</li>
+<li>using Intel´s <a href="http://software.intel.com/en-us/intel-mkl">Intel´s Math Kernel Library</a>
+</li>
+</ul>
+
+<p>I also wanted to know how an implicit parallel library, like OpenMP,
+performs within explicit parallelism, e.g. calls from the <code>parallel</code>
+package.
+</p>
+<p>
+So I compiled 6 different versions of R 3.01 on OS X and tested them
+for speed against the OS X .pkg from CRAN. I used gcc 4.8 (not the gcc
+4.2 from Apple), which you can download from <a href="http://hpc.sourceforge.net/">here</a>. For MKL, I used
+both the GNU (gcc, gfortran) and the Intel compilers (icc,
+ifortran). The 6 versions and their <code>configure</code> settings are:
+</p>
+<ol>
+<li><a href="https://gist.github.com/ronert/5645530">R 3.01 compiled with Apple´s Accelerate framework</a>
+</li>
+<li><a href="https://gist.github.com/ronert/5645541">R 3.01 compiled with OpenMP enabled</a>
+</li>
+<li><a href="https://gist.github.com/ronert/5645561">R 3.01 compiled with gcc and gfortran using Intel MKL (sequential)</a>
+</li>
+<li><a href="https://gist.github.com/ronert/5645576">R 3.01 compiled with icc and ifortran using Intel MKL (sequential)</a>
+</li>
+<li><a href="https://gist.github.com/ronert/5645598">R 3.01 compiled with gcc and gfortran using Intel MKL (threaded)</a>
+</li>
+<li><a href="#Https-gist.github.com-ronert-5645607">R 3.01 compiled with icc and ifortran using Intel MKL (threaded)</a>
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Benchmarks</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>To measure the speed of the 7 Versions of R I now had (6 compiled, 1
+.pkg from CRAN), I used Simon Urbanek´s <a href="http://r.research.att.com/benchmarks/R-benchmark-25.R">R Benchmark 2.5</a>. I let it
+execute serially for 8 runs, and then in parallel with 4 cores and
+2 runs each (so also 8 in total). Additionally, I let each version of
+R carry out a large matrix multiplication (10000 rows and 5000
+columns). Click <a href="https://gist.github.com/ronert/5645691">here to view the benchmark script.</a> I ran the tests on
+an Intel Core i5 clocked at 2.9 GHz with 16 GB RAM.
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Results</h2>
+<div class="outline-text-2" id="text-3">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption />
+<colgroup><col class="left" /><col class="right" /><col class="left" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">R 3.01</th><th scope="col" class="right">Bench. 2.5</th><th scope="col" class="left">Bench. 2.5 mclapply</th><th scope="col" class="right">Matrix mult.</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">CRAN OS X .pkg</td><td class="right">421.839</td><td class="left">154.851</td><td class="right">406.383</td></tr>
+<tr><td class="left">Accelerate with gcc</td><td class="right">107.624</td><td class="left">NA</td><td class="right">15.730</td></tr>
+<tr><td class="left">OpenMP enabled with gcc</td><td class="right">108.003</td><td class="left">NA</td><td class="right">14.530</td></tr>
+<tr><td class="left">MKL sequential compiled with gcc</td><td class="right">107.513</td><td class="left">NA</td><td class="right">15.449</td></tr>
+<tr><td class="left">MKL sequential compiled with icc</td><td class="right">133.528</td><td class="left">NA</td><td class="right">15.197</td></tr>
+<tr><td class="left">MKL threaded compiled with gcc</td><td class="right">111.821</td><td class="left">NA</td><td class="right">14.694</td></tr>
+<tr><td class="left">MKL threaded compiled with icc</td><td class="right">136.711</td><td class="left">NA</td><td class="right">15.033</td></tr>
+</tbody>
+</table>
+
+
+<p>
+So what do all the NAs mean? None of the R versions I compiled could
+execute <code>mclapply()</code> without crashing. If anyone knows how to fix this,
+please drop me a message. The benchmarks of the R versions that did
+run were <i>much</i> faster though. The Matrix multiplication was on
+average 2700% faster, and the more diversified R Benchmark was around
+400% faster than stock R on OS X for the optimized
+libraries. Nevertheless, if I cannot fix the crashes that occur with
+the parallel library, I am going to stick with the stock R version
+from CRAN. Any suggestions to improve the compiler options or tests to
+add to the profiling script are very welcome.
+</p></div>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up Octopress with Org-Mode]]></title>

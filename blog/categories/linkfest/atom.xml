@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linkfest | Everything Counts]]></title>
   <link href="http://ronert-obst.com/blog/categories/linkfest/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-05-24T22:56:55+02:00</updated>
+  <updated>2013-05-25T14:00:19+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -12,6 +12,117 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Weekend Linkfest 25.5.2013]]></title>
+    <link href="http://ronert-obst.com/blog/2013/05/25/weekend/"/>
+    <updated>2013-05-25T13:45:00+02:00</updated>
+    <id>http://ronert-obst.com/blog/2013/05/25/weekend</id>
+    <content type="html"><![CDATA[<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Statistics and Machine Learning</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li><a href="http://cacm.acm.org/news/164601-deep-learning-comes-of-age/fulltext">Deep Learning Comes of Age</a>
+</li>
+<li><a href="http://www.wired.com/wiredenterprise/2013/05/hinton/">Computer Brain Escapes Google's X Lab to Supercharge Search</a>
+</li>
+<li><a href="http://techtalks.tv/nyu/nyu-course-on-large-scale-machine-learning/">NYU Course on Big Data, Large Scale Machine Learning</a>
+</li>
+<li><a href="https://normaldeviate.wordpress.com/2013/05/18/steins-paradox/">Stein’s Paradox</a>
+</li>
+<li><a href="http://nuit-blanche.blogspot.ca/2012/05/part-4-from-data-to-knowledge-machine.html?m=1">Nuit Blanche: Part 4: From Data to Knowledge: Machine-Learning with Real-time and Streaming Applications</a>
+</li>
+<li><a href="http://appliedpredictivemodeling.com/blog/2013/5/20/one-statisticians-view-of-big-data">One Statistician’s View of Big Data</a>
+</li>
+<li><a href="http://datascience101.wordpress.com/2013/05/22/probabilistic-programming-and-bayesian-methods-for-hackers-online-book/">Probabilistic Programming and Bayesian Methods for Hackers Online Book</a>
+</li>
+<li><a href="http://www.maths.uq.edu.au/~kroese/mccourse.pdf">Monte Carlo Methods</a>
+</li>
+<li><a href="https://hips.seas.harvard.edu/blog/2013/05/20/testing-mcmc-code-part-1-unit-tests/">Testing MCMC code, part 1: unit tests – Building Intelligent Probabilistic Systems</a>
+</li>
+<li><a href="http://www.austinrochford.com/posts/2013-05-17-bayesian-hypothesis-testing-with-pymc.html">Austin Rochford - Bayesian Hypothesis Testing with PyMC</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">R Package of the Week</h2>
+<div class="outline-text-2" id="text-2">
+
+<ul>
+<li><a href="http://caret.r-forge.r-project.org/">The caret Package</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Paper of the Week</h2>
+<div class="outline-text-2" id="text-3">
+
+<ul>
+<li><a href="http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?handle=euclid.ba/1369407550&amp;view=body&amp;content-type=pdfview_1">Bayesian Nonparametric Inference —Why and How</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Programming</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li><a href="http://blog.wolfram.com/2013/05/22/why-would-a-mathematica-user-care-about-r/">Why Would a Mathematica User Care about R? « Wolfram Blog</a>
+</li>
+<li><a href="http://www.burns-stat.com/an-r-debugging-example/">An R debugging example - Burns Statistics</a>
+</li>
+<li><a href="http://dahtah.wordpress.com/2013/05/17/finding-patterns-in-time-series-using-regular-expressions/">Finding patterns in time series using regular expressions</a>
+</li>
+<li><a href="http://pychecker.sourceforge.net/">PyChecker: a python source code checking tool</a>
+</li>
+<li><a href="http://continuum.io/blog/numba_performance">Accelerating Python Libraries with Numba (Part 2)</a>
+</li>
+<li><a href="http://blog.jorgenschaefer.de/2013/04/elpy-10-released.html">Jorgen’s Weblog: Elpy 1.0 Released</a>
+</li>
+<li><a href="http://altons.github.io/git/2013/05/23/notes-about-git/">Notes about GIT</a>
+</li>
+<li><a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">Functors, Applicatives, And Monads In Pictures</a>
+</li>
+<li><a href="http://nltk-trainer.readthedocs.org/en/latest/">NLTK-Trainer’s</a>
+</li>
+<li><a href="http://datascience101.wordpress.com/2013/05/16/confused-on-hadoop/">Confused on Hadoop? This link will help</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Elsewhere</h2>
+<div class="outline-text-2" id="text-5">
+
+<ul>
+<li><a href="http://blog.evernote.com/blog/2013/05/23/evernote-reminders-are-here-on-mac-ios-and-web-2/">Evernote Blog | Evernote Reminders Are Here on Mac, iOS and Web</a>
+</li>
+<li><a href="http://www.economist.com/news/science-and-technology/21578027-first-real-world-contests-between-quantum-computers-and-standard-ones-faster">Quantum computing: Faster, slower—or both at once? | The Economist</a>
+</li>
+<li><a href="http://www.theonion.com/articles/friend-who-sent-link-to-8minute-youtube-video-must,32442/">Friend Who Sent Link To 8-Minute YouTube Video Must Be Fucking Delusional</a>
+</li>
+</ul>
+
+</div>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Weekend Linkfest 17.5.2013]]></title>

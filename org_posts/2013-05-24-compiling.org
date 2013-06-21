@@ -59,3 +59,5 @@ libraries. Nevertheless, if I cannot fix the crashes that occur with
 the parallel library, I am going to stick with the stock R version
 from CRAN. Any suggestions to improve the compiler options or tests to
 add to the profiling script are very welcome.
+* EDIT (21.06.2013)
+There is a new post about [[http://www.flaviobarros.net/2013/06/19/compiling-r-3-0-1-with-mkl-support/][Compiling R 3.0.1 with MKL support]] from Flavio Barros that may help some people.

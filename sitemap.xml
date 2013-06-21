@@ -1,24 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://ronert-obst.com/blog/2013/05/17/weekly-linkfest-17-dot-5-2013/</loc>
+        <loc>http://ronert-obst.com/blog/2013-05-17-weekly-linkfest-17-dot-5-2013.html</loc>
         <lastmod>2013-05-24T22:44:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://ronert-obst.com/blog/2013/05/17/setting-up-octopress-with-org-mode/</loc>
+        <loc>http://ronert-obst.com/blog/2013-05-17-setting-up-octopress-with-org-mode.html</loc>
         <lastmod>2013-05-24T22:44:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://ronert-obst.com/blog/2013/05/24/compiling/</loc>
+        <loc>http://ronert-obst.com/blog/2013-05-24-compiling.html</loc>
         <lastmod>2013-05-25T13:59:06+02:00</lastmod>
     </url>
     <url>
-        <loc>http://ronert-obst.com/blog/2013/05/25/weekend/</loc>
+        <loc>http://ronert-obst.com/blog/2013-05-25-weekend.html</loc>
         <lastmod>2013-05-25T14:00:10+02:00</lastmod>
     </url>
     <url>
-        <loc>http://ronert-obst.com/blog/2013/06/01/linkfest1june/</loc>
+        <loc>http://ronert-obst.com/blog/2013-06-01-linkfest1june.html</loc>
         <lastmod>2013-06-01T14:13:21+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ronert-obst.com/blog/2013-06-21-linkfest.html</loc>
+        <lastmod>2013-06-21T19:48:43+02:00</lastmod>
     </url>
     <url>
         <loc>http://ronert-obst.com/about/</loc>
@@ -26,11 +30,11 @@
     </url>
     <url>
         <loc>http://ronert-obst.com/blog/archives/</loc>
-        <lastmod>2013-06-01T14:13:21+02:00</lastmod>
+        <lastmod>2013-06-21T19:48:43+02:00</lastmod>
     </url>
     <url>
         <loc>http://ronert-obst.com/</loc>
-        <lastmod>2013-06-01T14:13:21+02:00</lastmod>
+        <lastmod>2013-06-21T19:48:43+02:00</lastmod>
     </url>
     <url>
         <loc>http://ronert-obst.com/r.xml</loc>

@@ -3,11 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Category: Emacs, - Everything Counts</title>
+	<title>Fast cross-validation - Everything Counts</title>
 	<meta name="author" content="Ronert Obst">
 
 	
-	<meta name="description" content="Category: Emacs,">
+	<meta name="description" content="Browsing through the 2013 ICML Atlanta papers, I found Algebraic
+classifiers: a generic approach to fast cross-validation, online
+training, and &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -85,28 +87,62 @@
 	
 		
 	
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Fast Cross-validation</h2>
+	<div class="entry-content"><p>
+Browsing through the 2013 <a href="http://icml.cc/2013/">ICML Atlanta</a> papers, I found <a href="http://jmlr.org/proceedings/papers/v28/izbicki13.pdf">Algebraic
+classifiers: a generic approach to fast cross-validation, online
+training, and parallel training</a> particularly interesting. Michael
+Izbicki shows that if a model can be represented as a monoid, the
+runtime of <i>k</i>-fold cross-validation can be reduced to \(O(k+n)\) from
+\(O(kn)\). His method is not an approximation either—the results are
+exact. I suggest you check out the paper for the details—this
+certainly looks really useful. For extra cool points Michael Izbicki
+used Haskell for his implementation.
+</p>
+</div>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2013</h1>
-
-<article>
-	<h2 class="title"><a href="/blog/2013-05-17-setting-up-octopress-with-org-mode.html">Setting up Octopress with Org-Mode</a></h2>
-	<div class="meta">
-		<div class="date">May 17</div>
-		<div class="tags">
+<div class="meta">
+	<div class="date">
 
 
-	<a class='category' href='/blog/categories/emacs/'>Emacs,</a>, <a class='category' href='/blog/categories/latex/'>LaTeX</a>, <a class='category' href='/blog/categories/otopress/'>Otopress,</a>
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-24T00:00:00+02:00" pubdate data-updated="true">Jun 24<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/learning/'>Learning</a>, <a class='category' href='/blog/categories/machine/'>Machine</a>
 
 
 </div>
-	    
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
 
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2013

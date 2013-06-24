@@ -4,7 +4,7 @@
   <title><![CDATA[Everything Counts]]></title>
   <link href="http://ronert-obst.com/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-06-21T19:49:27+02:00</updated>
+  <updated>2013-06-24T21:19:33+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fast cross-validation]]></title>
+    <link href="http://ronert-obst.com/blog/2013-06-24-algebraic-cv.html"/>
+    <updated>2013-06-24T00:00:00+02:00</updated>
+    <id>http://ronert-obst.com/blog/algebraic-cv</id>
+    <content type="html"><![CDATA[<p>
+Browsing through the 2013 <a href="http://icml.cc/2013/">ICML Atlanta</a> papers, I found <a href="http://jmlr.org/proceedings/papers/v28/izbicki13.pdf">Algebraic
+classifiers: a generic approach to fast cross-validation, online
+training, and parallel training</a> particularly interesting. Michael
+Izbicki shows that if a model can be represented as a monoid, the
+runtime of <i>k</i>-fold cross-validation can be reduced to \(O(k+n)\) from
+\(O(kn)\). His method is not an approximation either—the results are
+exact. I suggest you check out the paper for the details—this
+certainly looks really useful. For extra cool points Michael Izbicki
+used Haskell for his implementation.
+</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Weekend Linkfest 21.6.2013]]></title>

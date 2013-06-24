@@ -7,7 +7,9 @@
 	<meta name="author" content="Ronert Obst">
 
 	
-	<meta name="description" content="I was very busy, so I skipped two linkfests. Here is a long one this week! Statistics and Machine Learning Probabilistic Programming and Bayesian &hellip;">
+	<meta name="description" content="Browsing through the 2013 ICML Atlanta papers, I found Algebraic
+classifiers: a generic approach to fast cross-validation, online
+training, and &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -17,7 +19,11 @@
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<!--- MathJax Configuration -->
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://ronert-obst.com/javascripts/MathJaxLocal.js">
+</script>
+
 </head>
 
 <body>
@@ -82,6 +88,56 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013-06-24-algebraic-cv.html">
+		
+			Fast Cross-validation</a>
+	</h2>
+	<div class="entry-content">
+		<p>
+Browsing through the 2013 <a href="http://icml.cc/2013/">ICML Atlanta</a> papers, I found <a href="http://jmlr.org/proceedings/papers/v28/izbicki13.pdf">Algebraic
+classifiers: a generic approach to fast cross-validation, online
+training, and parallel training</a> particularly interesting. Michael
+Izbicki shows that if a model can be represented as a monoid, the
+runtime of <i>k</i>-fold cross-validation can be reduced to \(O(k+n)\) from
+\(O(kn)\). His method is not an approximation either—the results are
+exact. I suggest you check out the paper for the details—this
+certainly looks really useful. For extra cool points Michael Izbicki
+used Haskell for his implementation.
+</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-24T00:00:00+02:00" pubdate data-updated="true">Jun 24<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/learning/'>Learning</a>, <a class='category' href='/blog/categories/machine/'>Machine</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">

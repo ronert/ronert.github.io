@@ -4,7 +4,7 @@
   <title><![CDATA[Everything Counts]]></title>
   <link href="http://ronert-obst.com/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-07-13T20:43:18+02:00</updated>
+  <updated>2013-07-14T12:52:25+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[List Comprehensions in R]]></title>
+    <link href="http://ronert-obst.com/blog/2013-07-14-listcomprehensions.html"/>
+    <updated>2013-07-14T00:00:00+02:00</updated>
+    <id>http://ronert-obst.com/blog/listcomprehensions</id>
+    <content type="html"><![CDATA[<p>
+List comprehensions in Python or Haskell are popular and useful tools to filter a list given some predicates. The <code>foreach</code> package by <a href="http://www.revolutionanalytics.com/">Revolution Analytics</a> gives us a handy interface to list comprehensions in R.
+</p>
+
+<p>
+Quicksort is a recursive algorithm to sort a list. In Haskell, quicksort looks very clean and elegant using list comprehensions (from <a href="http://learnyouahaskell.com/recursion#quick-sort">Learn You a Haskell for Great Good!</a>):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span style="color: #2075c7;">quicksort</span> <span style="color: #2075c7;">::</span> (<span style="color: #a57705;">Ord</span> a) <span style="color: #2075c7;">=&gt;</span> [a] <span style="color: #2075c7;">-&gt;</span> [a]  
+<span style="color: #2075c7;">quicksort</span> <span style="color: #a57705;">[]</span> <span style="color: #2075c7;">=</span> <span style="color: #a57705;">[]</span>  
+<span style="color: #2075c7;">quicksort</span> (x<span style="color: #a57705;">:</span>xs) <span style="color: #2075c7;">=</span>   
+    <span style="color: #728a05;">let</span> smallerSorted <span style="color: #2075c7;">=</span> quicksort [a <span style="color: #2075c7;">|</span> a <span style="color: #2075c7;">&lt;-</span> xs, a <span style="color: #2075c7;">&lt;=</span> x]  
+        biggerSorted <span style="color: #2075c7;">=</span> quicksort [a <span style="color: #2075c7;">|</span> a <span style="color: #2075c7;">&lt;-</span> xs, a <span style="color: #2075c7;">&gt;</span> x]  
+    <span style="color: #728a05;">in</span>  smallerSorted <span style="color: #2075c7;">++</span> [x] <span style="color: #2075c7;">++</span> biggerSorted
+</pre>
+</div>
+<p>
+Quicksort takes the first element of a list and puts all smaller elements on the left of the item and all larger elements to the right. It recursively calls <code>quicksort</code> again on those sublists (<code>smallerSorted</code> and <code>biggerSorted</code>). The list comprehension <code>[a | a &lt;- xs, a &lt; x]</code>
+takes a list as an input and filters out all elements that are smaller than \(x\), whereas <code>[a | a &lt;- xs, a &gt; x]</code> filters out all elements that are larger than \(x\).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">ghci<span style="color: #2075c7;">&gt;</span> quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]  
+[1,2,2,3,3,4,4,5,6,7,8,9,10]
+</pre>
+</div>
+
+<p>
+Using <code>foreach</code>, the same algorithm in R looks like this (from the <code>foreach</code> <a href="http://cran.r-project.org/web/packages/foreach/vignettes/foreach.pdf">vignette</a>):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-r"><span style="color: #259185;">library</span>(foreach)
+
+<span style="color: #2075c7;">qsort</span> <span style="color: #259185;">&lt;-</span> <span style="color: #728a05;">function</span>(x) {
+    n <span style="color: #259185;">&lt;-</span> length(x)
+    <span style="color: #728a05;">if</span> (n == 0) {
+        x
+    } <span style="color: #728a05;">else</span> {
+        p <span style="color: #259185;">&lt;-</span> sample(n, 1)
+        smaller <span style="color: #259185;">&lt;-</span> foreach(y=x[-p], .combine=c) %:% when(y &lt;= x[p]) %do% y
+        larger <span style="color: #259185;">&lt;-</span> foreach(y=x[-p], .combine=c) %:% when(y &gt; x[p]) %do% y
+        c(qsort(smaller), x[p], qsort(larger))
+    }
+}
+</pre>
+</div>
+
+<p>
+Not quite as concise as Haskell, but close! 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-r">&gt; qsort(c(10,2,5,3,1,6,7,4,2,3,4,8,9))
+[1]  1  2  2  3  3  4  4  5  6  7  8  9 10
+</pre>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Weekend Linkfest 13.7.2013]]></title>

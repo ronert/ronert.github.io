@@ -20,7 +20,7 @@ memory framework.
 Install StarCluster using
 
 #+begin_src sh :exports code
-sudo easy_install StarCluster
+$ sudo easy_install StarCluster
 #+end_src
 
 and then create a configuration file using 

@@ -7,7 +7,7 @@
 	<meta name="author" content="Ronert Obst">
 
 	
-	<meta name="description" content="Statistics and Machine Learning 7 Important Data Science Papers New Directions in Mahout&#8217;s Recommenders DavaViz for Everyone: Responsive Maps &hellip;">
+	<meta name="description" content="StarCluster is a utility for creating and managingdistributed computing clusters hosted on Amazon&#8217;s Elastic ComputeCloud (EC2). StarCluster &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,6 +84,168 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013-09-01-starcluster.html">
+		
+			StarCluster and R</a>
+	</h2>
+	<div class="entry-content">
+		<p>
+<blockquote><p>StarCluster is a utility for creating and managing<br/>distributed computing clusters hosted on Amazon&#8217;s Elastic Compute<br/>Cloud (EC2). StarCluster utilizes Amazon´s EC2 web service to create<br/>and destroy clusters of Linux virtual machines on demand.</p><footer><strong>Justin Riley <a href="http://star.mit.edu/cluster/docs/latest/index.html">http://star.mit.edu/cluster/docs/latest/index.html</a> StarCluster documentation</strong></footer></blockquote>
+</p>
+
+<p>
+StarCluster provides a convenient way to quickly set up a cluster of
+machines to run some data parallel jobs using a distributed
+memory framework. 
+</p>
+
+<p>
+Install StarCluster using
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">sudo easy_install StarCluster
+</pre>
+</div>
+
+<p>
+and then create a configuration file using 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">$ starcluster help
+</pre>
+</div>
+
+<p>
+Add your AWS credentials to the config file and follow the
+instructions at the <a href="http://star.mit.edu/cluster/docs/latest/quickstart.html">StarCluster quick-Start guide</a>.
+</p>
+
+<p>
+Once you have StarCluster up and running, you need to install R on all the cluster nodes
+and any packages you require. I wrote a shell script to automate the process:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">!/bin/</span><span style="color: #859900; font-weight: bold;">zsh</span>
+
+starcluster put $<span style="color: #268bd2;">1</span> starcluster.setup.zsh /home/starcluster.setup.zsh
+starcluster put $<span style="color: #268bd2;">1</span> Rpkgs.R /home/Rpkgs.R
+
+<span style="color: #268bd2;">numNodes</span>=<span style="color: #6c71c4; font-weight: bold;">`starcluster listclusters | grep "Total nodes" | cut -d' ' -f3`</span>
+<span style="color: #268bd2;">nodes</span>=(<span style="color: #6c71c4; font-weight: bold;">`eval echo $(seq -f node%03g 1 $(($numNodes-1)))`</span>)
+
+<span style="color: #859900; font-weight: bold;">for</span> node<span style="color: #859900; font-weight: bold;"> in</span> $<span style="color: #268bd2;">nodes</span>; <span style="color: #859900; font-weight: bold;">do</span>
+    <span style="color: #268bd2;">cmd</span>=<span style="color: #2aa198;">"source /home/starcluster.setup.zsh &gt;&amp; /home/install.log.$node"</span>
+    starcluster sshmaster $<span style="color: #268bd2;">1</span> <span style="color: #2aa198;">"ssh $node $cmd"</span> &amp;
+<span style="color: #859900; font-weight: bold;">done</span>
+</pre>
+</div>
+
+<p>
+The script takes the name of your cluster as a parameter and pushes
+the two helper files to the cluster. It then runs the installation on
+the master and every node. It assumes you are running an Ubuntu Server
+based StarCluster AMI, which is the default. The first helper
+script, <code>starcluster.setup.zsh</code>, installs the basic software
+required:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">!/bin/</span><span style="color: #859900; font-weight: bold;">zsh</span>
+
+<span style="color: #657b83; font-weight: bold;">echo</span> <span style="color: #2aa198;">"deb http://stat.ethz.ch/CRAN/bin/linux/ubuntu precise/"</span> &gt;&gt; /etc/apt/sources.list
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+apt-get update
+apt-get install -y r-base r-base-dev
+<span style="color: #657b83; font-weight: bold;">echo</span> &#8220;DONE with Ubuntu package installation on $(hostname -s).&#8221;
+R CMD BATCH --no-save /home/Rpkgs.R /home/install.Rpkgs.log
+<span style="color: #657b83; font-weight: bold;">echo</span> &#8220;DONE with R package installation on $(hostname -s).&#8221;
+</pre>
+</div>
+
+<p>
+The second script, <code>Rpkgs.R</code>, is just a R script containing
+the packages you want installed:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #268bd2;">install.packages</span>(c(<span style="color: #2aa198;">"randomForest"</span>, <span style="color: #2aa198;">"caret"</span>, <span style="color: #2aa198;">"mboost"</span>, <span style="color: #2aa198;">"plyr"</span>, <span style="color: #2aa198;">"glmnet"</span>),
+ <span style="color: #268bd2;">repos</span> = <span style="color: #2aa198;">"http://cran.cnr.berkeley.edu"</span>)
+<span style="color: #657b83; font-weight: bold;">print</span>(paste(<span style="color: #2aa198;">"DONE with R package installation on "</span>, system(<span style="color: #2aa198;">"hostname -s"</span>, <span style="color: #268bd2;">intern</span> = TRUE), <span style="color: #2aa198;">"."</span>))
+</pre>
+</div>
+
+<p>
+Once you have everything installed, you can <code>ssh</code> into your master node and start up R as usual:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">$ starcluster sshmaster mycluster
+$ R
+</pre>
+</div>
+
+<p>
+Since StarCluster has set up all the networking nicely, you can use
+<code>parLapply</code> from the <code>parallel</code> package to run a task on your cluster
+without further configuration. Running a data parallel task on a
+cluster with 10 nodes is now as easy as this (<code>parLapply</code> is just like
+<code>lapply</code>, except it distributes the tasks over the cluster):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-r"><span style="color: #268bd2; font-weight: bold;">library</span>(<span style="color: #2aa198;">"parallel"</span>)
+cluster_names <span style="color: #268bd2; font-weight: bold;">&lt;-</span> paste(<span style="color: #2aa198;">"node00"</span>, 1:9, sep=<span style="color: #2aa198;">""</span>)
+cluster_names <span style="color: #268bd2; font-weight: bold;">&lt;-</span> c(cluster_names, <span style="color: #2aa198;">"node010"</span>)
+cluster <span style="color: #268bd2; font-weight: bold;">&lt;-</span> makePSOCKcluster(names = cluster_names)
+output <span style="color: #268bd2; font-weight: bold;">&lt;-</span> parLapply(cluster, some_input, some_function)
+stopCluster(cluster)
+</pre>
+</div>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-01T00:00:00+02:00" pubdate data-updated="true">Sep 1<span>st</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/r/'>R</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -1064,49 +1226,6 @@ observations <span style="color: #259185;">&lt;-</span> observations[!observatio
 
 
 	<a class='category' href='/blog/categories/linkfest/'>Linkfest</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013-07-02-essremote.html">
-		
-			Using ESS-Remote</a>
-	</h2>
-	<div class="entry-content">
-		<p>
-If you use R and ssh into other machines a lot, e.g. for doing some big data stuff on ec2, <code>ess-remote</code> is a great tool. Just use <code>M-x ssh</code> to ssh into the remote machine, then launch R. Now just <code>M-x ess-remote</code> and you can use the R process just like a local process! Productivity win. Also see <a href="http://blog.nguyenvq.com/2010/07/11/using-r-ess-remote-with-screen-in-emacs/">this</a>
-if you´re using screen.
-</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-02T00:00:00+02:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/emacs/'>Emacs</a>, <a class='category' href='/blog/categories/r/'>R</a>
 
 
 </div>

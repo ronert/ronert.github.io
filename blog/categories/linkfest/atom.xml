@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linkfest | Everything Counts]]></title>
   <link href="http://ronert-obst.com/blog/categories/linkfest/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-09-15T21:58:10+02:00</updated>
+  <updated>2013-09-28T23:55:10+02:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Weekend Linkfest 28.9.2013]]></title>
+    <link href="http://ronert-obst.com/blog/2013-09-28-linkfest.html"/>
+    <updated>2013-09-28T00:00:00+02:00</updated>
+    <id>http://ronert-obst.com/blog/linkfest</id>
+    <content type="html"><![CDATA[<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Statistics and Machine Learning</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="http://vis.stanford.edu/projects/immens/">imMens: Real-time Visual Querying of Big Data</a>
+</li>
+<li><a href="http://www.nature.com/nmeth/journal/v10/n10/full/nmeth.2659.html">Points of Significance: Error bars</a>
+</li>
+<li><a href="http://requestinfo.datascience.berkeley.edu/index.html?s%3Dtwitterppc&amp;l%3D1gds_ht_tl_gen1&amp;utm_source%3Dtwitterppc&amp;utm_medium%3Dlink&amp;utm_campaign%3D1gds_ht_tl_gen1">atascience@berkeley</a>
+</li>
+<li><a href="http://www.forbes.com/sites/jeffmcmahon/2013/09/25/utilities-dumbstruck-by-big-data-from-smarter-grid/">Utilities Dumbstruck By Big Data From Smarter Grid</a>
+</li>
+<li><a href="http://svonava.com/post/62186512058/datasets-released-by-google">Datasets released by Google</a>
+</li>
+<li><a href="http://www.technologyreview.com/news/519411/facebook-launches-advanced-ai-effort-to-find-meaning-in-your-posts/">Facebook Chases Google’s Deep Learning with New Research Group</a>
+</li>
+<li><a href="https://vimeo.com/75358652">Discovering Hidden Structure in Data with Latent Variable Models in Python on</a>
+</li>
+<li><a href="http://mloss.org/revision/view/1404/">LIBOL is an open-source library for large-scale online classification</a>
+</li>
+<li><a href="http://www.nature.com/srep/2013/130207/srep01236/full/srep01236.html">Extracting insights from the shape of complex data using topology</a>
+</li>
+<li><a href="http://dl.acm.org/citation.cfm?id%3D2391072">Monte Carlo MCMC: efficient inference by approximate sampling</a>
+</li>
+<li><a href="http://blog.mikiobraun.de/2013/09/designing-machine-learning-frameworks.html">Designing ML frameworks</a>
+</li>
+<li><a href="https://github.com/JasperSnoek/spearmint">Spearmint is a package to perform Bayesian optimization</a>
+</li>
+<li><a href="http://simplystatistics.org/2013/09/17/announcing-the-simply-statistics-unconference-on-the-future-of-statistics-futureofstats/">Announcing the Simply Statistics Unconference on the Future of Statistics #futureofstats</a>
+</li>
+<li><a href="http://www.chrisstucchio.com/blog/2013/bayesian_bandit.html">Bayesian Bandits - optimizing click throughs with statistics</a>
+</li>
+<li><a href="http://errorstatistics.com/2013/09/14/when-bayesian-inference-shatters-owhadi-scovel-and-sullivan-guest-post/">“When Bayesian Inference Shatters” Owhadi, Scovel, and Sullivan</a>
+</li>
+<li><a href="http://statsatlmu.tumblr.com/post/61393875021/penalized-likelihood-and-bayesian-function-selection-in">Penalized likelihood and Bayesian function selection in regression models</a>
+</li>
+<li><a href="http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf?utm_source%3Dbuffer&amp;utm_campaign%3DBuffer&amp;utm_content%3Dbuffer2f66c&amp;utm_medium%3Dtwitter">A Practical Guide to Training Restricted Boltzmann Machines</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">R Package of the Week</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="http://blog.mckuhn.de/2013/09/introducing-parallelrandomforest-faster.html">Introducing parallelRandomForest: faster, leaner, parallelized</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Paper of the Week</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="http://arxiv.org/abs/1309.6865">Modeling Documents with Deep Boltzmann Machines</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Programming</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="http://blog.mortardata.com/post/61501767090/hadoop-for-data-science">Hadoop for Data Science (Slides &amp; Video) | Mortar Blog</a>
+</li>
+<li><a href="http://www.chrisstucchio.com/blog/2013/hadoop_hatred.html">Don't use Hadoop - your data isn't that big</a>
+</li>
+<li><a href="http://adv-r.had.co.nz/">Advanced R Programming</a>
+</li>
+<li><a href="http://jeroenjanssens.com/2013/09/19/seven-command-line-tools-for-data-science.html">7 command-line tools for data science</a>
+</li>
+<li><a href="http://gastonsanchez.wordpress.com/2013/09/22/handling-and-processing-strings-in-r/">Handling and Processing Strings in R</a>
+</li>
+<li>Video: <a href="https://thenewcircle.com/s/post/1540/a_billion_rows_per_second_metaprogramming_python_for_big_data_ville_tuulos_video">A Billion Rows per Second: Metaprogramming Python for Big Data</a> Slides: <a href="http://tuulos.github.io/sf-python-meetup-sep-2013/#/">Metaprogramming Python for Big Data</a>
+</li>
+<li><a href="https://github.com/olgabot/prettyplotlib">Prettyplitlib for good looking matplotlib plots</a>
+</li>
+<li><a href="http://gigaom.com/2013/09/25/databricks-raises-14m-from-andreessen-horowitz-wants-to-take-on-mapreduce-with-spark/">Databricks raises $14M from Andreessen Horowitz, wants to take on MapReduce with Spark</a>
+</li>
+<li><a href="http://blog.revolutionanalytics.com/2013/09/r-302-frisbee-sailing-now-available.html">R 3.0.2 "Frisbee Sailing" now available</a>
+</li>
+<li><a href="http://www.chrisstucchio.com/blog/2013/why_not_python.html">Why Not Python - the GIL hinders concurrency</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Elsewhere</h2>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Weekend Linkfest 15.9.2013]]></title>
@@ -340,126 +441,6 @@
 <li><a href="http://www.rdatamining.com/tutorials/rhadoop">Building an R Hadoop System</a>
 </li>
 <li><a href="http://www.rdatamining.com/tutorials/rhadoop%5D%5BBuilding%20an%20R%20Hadoop%20System%20-%20RDataMining.com:%20R%20and%20Data%20Mining%5D%5D">GNU Parallel</a>
-</li>
-</ul>
-</div>
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Weekend Linkfest 9.8.2013]]></title>
-    <link href="http://ronert-obst.com/blog/2013-08-09-linkfest04082013.html"/>
-    <updated>2013-08-09T00:00:00+02:00</updated>
-    <id>http://ronert-obst.com/blog/linkfest04082013</id>
-    <content type="html"><![CDATA[<p>
-A lot of cool stuff this week!
-</p>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Statistics and Machine Learning</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li><a href="http://blog.revolutionanalytics.com/2013/08/job-trends-for-statistics-packages.html">Demand for R jobs on the rise, while SAS jobs decline</a>
-</li>
-<li><a href="http://blog.revolutionanalytics.com/2013/08/statisticians-contemplate-their-own-extinction.html">Statisticians: an endangered species?</a>
-</li>
-<li><a href="http://statistical-research.com/data-science-statistics-and-the-domain-expert/?utm_source%3Drss&amp;utm_medium%3Drss&amp;utm_campaign%3Ddata-science-statistics-and-the-domain-expert">Data Scientists and Statisticians: Can’t We All Just Get Along | Statistical Research</a>
-</li>
-<li><a href="http://simplystatistics.org/2013/08/08/data-scientist-is-just-a-sexed-up-word-for-statistician/#comment-993680252">Data scientist is just a sexed up word for statistician</a>
-</li>
-<li><a href="http://www.reddit.com/r/MachineLearning/comments/1joh9v/can_someone_explain_kernel_trick_intuitively/?utm_source%3Dtwitterfeed&amp;utm_medium%3Dtwitter">Can someone explain Kernel Trick intuitively?</a>
-</li>
-<li><a href="http://codealamode.blogspot.ie/2013/08/bootstrap-confidence-interval-methods.html">Code à la Mode: Bootstrap Confidence Interval Methods in R</a>
-</li>
-<li><a href="https://hips.seas.harvard.edu/blog/2013/08/01/icml-highlight-fast-dropout-training/">ICML Highlight: Fast Dropout Training</a>
-</li>
-<li><a href="https://hips.seas.harvard.edu/blog/2013/08/01/icml-highlight-fast-dropout-training/%5D%5BICML%20Highlight:%20Fast%20Dropout%20Training%20%E2%80%93%20Building%20Intelligent%20Probabilistic%20Systems%5D%5D">Designing Machine Learning Algorithms for Hadoopon</a>
-</li>
-<li><a href="http://www.reddit.com/r/MachineLearning/comments/1jeawf/machine_learning_books/?utm_source%3Dtwitterfeed&amp;utm_medium%3Dtwitter">Machine Learning Books</a>
-</li>
-<li><a href="http://nickqizhu.github.io/d3-cookbook/">D3 Cookbook Recipes</a>
-</li>
-<li><a href="http://engineering.linkedin.com/event/video-3-big-data-tech-talks-you-can%25E2%2580%2599t-miss">Video: 3 Big Data Tech Talks You Can’t Miss</a>
-</li>
-<li><a href="http://rpubs.com/jimhester/bigdatabinning">Big Data Binning</a>
-</li>
-<li><a href="https://www.repository.cam.ac.uk/handle/1810/244707">Maximum likelihood parameter estimation in time series models using sequential Monte Carlo</a>
-</li>
-<li><a href="http://compneurobio.wordpress.com/2013/07/30/impressions-from-icml-2013/">Impressions from ICML 2013</a>
-</li>
-<li><a href="http://gallery.rcpp.org/articles/gibbs-sampler/">Gibbs Sampler in C++</a>
-</li>
-<li><a href="http://blog.revolutionanalytics.com/2013/08/expansion-stay-or-move.html">How to choose a new business location with R</a>
-</li>
-<li><a href="http://hernanresnizky.wordpress.com/2013/08/02/dashboards-in-r-with-shiny-and-googlevis/">Dashboards in R with Shiny and GoogleVis</a>
-</li>
-<li><a href="http://timelyportfolio.blogspot.de/2013/08/gridsvganother-glue-for-r-to-svg.html">Timely Portfolio: I Want ggplot2/lattice and d3</a>
-</li>
-<li><a href="http://statblog.net/2013/03/15/my-time-among-the-statisticians/">My Time Among the Statisticians |</a>
-</li>
-<li><a href="http://gael-varoquaux.info/blog/?p%3D169">Scikit-learn 0.14 release: features and benchmarks</a>
-</li>
-<li><a href="http://vudlab.com/#/learn">Visualizing Urban Data IdeaLab</a>
-</li>
-<li><a href="http://webscope.sandbox.yahoo.com/catalog.php">Webscope from Yahoo! Labs</a>
-</li>
-<li><a href="http://radar.oreilly.com/2013/08/podcast-ratings-rankings-and-being-born-lucky.html">Podcast: ratings, rankings, and the advantage of being born lucky - O'Reilly Radar</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">R Package of the Week</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li><a href="http://christophergandrud.github.io/d3Network/">d3Network</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Paper of the Week</h2>
-<div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li><a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/pubs/archive/41159.pdf">Ad Click Prediction: a View from the Trenches</a>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Programming</h2>
-<div class="outline-text-2" id="text-4">
-<ul class="org-ul">
-<li><a href="http://julien.danjou.info/blog/2013/guide-python-static-class-astract-methods">The definitive guide on how to use static, class or abstract methods in Python</a>
-</li>
-<li><a href="http://peekaboo-vision.blogspot.de/2013/07/scikit-learn-sprint-and-014-release.html">Peekaboo: Scikit-learn sprint and 0.14 release candidate</a>
-</li>
-<li><a href="http://datascience101.wordpress.com/2013/07/31/introduction-to-apache-mahout-slides/">Introduction to Apache Mahout Slides</a>
-</li>
-<li><a href="http://www.haskellforall.com/">Haskell for all</a>
-</li>
-<li><a href="http://blog.wolfram.com/2013/07/31/mathematica-gets-bigdata-with-hadooplink/">Mathematica gets Big Data with HadoopLink</a>
-</li>
-<li><a href="http://prajitr.github.io/quick-haskell-syntax/">A Quick Tour of Haskell Syntax</a>
-</li>
-<li><a href="http://www.pyregex.com/">PyRegex</a>
-</li>
-<li><a href="http://www.emacstapas.com/">emacs bites</a>
-</li>
-<li><a href="https://dataset.readthedocs.org/en/latest/">dataset: databases for lazy people</a>
-</li>
-<li><a href="http://gettinggeneticsdone.blogspot.de/2013/08/google-developers-r-programming-video.html">R Programming Video Lectures</a>
-</li>
-<li><a href="http://mosh.mit.edu/">Mosh: the mobile shell</a>
-</li>
-<li><a href="http://nbviewer.ipython.org/url/jdj.mit.edu/~stevenj/IJulia%252520Preview.ipynb">IJulia Preview</a>
-</li>
-<li><a href="http://robots.thoughtbot.com/post/2641409235/a-tmux-crash-course#">A Tmux Crash Course</a>
-</li>
-<li><a href="http://ndpsoftware.com/git-cheatsheet.html">Git Cheatsheet</a>
 </li>
 </ul>
 </div>

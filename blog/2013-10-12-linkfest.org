@@ -1,0 +1,29 @@
+#+TITLE: Weekend Linkfest 12.10.2013
+#+DATE: 2013-10-12
+#+SETUPFILE: ~/Dropbox/octopress/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: Linkfest
+#+JEKYLL_PUBLISHED: true
+
+* Statistics and Machine Learning
+- [[http://freakonometrics.hypotheses.org/9184][Some heuristics about spline smoothing]]
+- [[http://beckmw.wordpress.com/2013/10/07/sensitivity-analysis-for-neural-networks/][Sensitivity analysis for neural networks]]
+- [[http://mloss.org/revision/view/1428/][MLlib distributed machine learning library]]
+- [[http://mloss.org/revision/view/1425/][Hivemall provides machine learning functionality as well as feature engineering functions through UDFs/UDAFs/UDTFs of Hive]] 
+- [[http://nlp.stanford.edu/sentiment/index.html][Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank]]
+- [[http://petewarden.com/2013/10/06/geocode-the-world-with-the-new-data-science-toolkit/][Geocode the world with the new Data Science Toolkit]]
+- [[http://gigaom.com/2013/10/08/new-tool-lets-you-visualize-just-about-anything-in-5-minutes-maybe-less/][New tool lets you visualize just about anything in 5 minutes (maybe less)]]
+- [[http://www.fastcolabs.com/3019608/how-foursquare-made-those-insane-data-visualizations][How Foursquare Made Those Insane Data Visualizations]]
+- [[https://github.com/battlesnake/neural][neural - LaTeX/TikZ/PGF package for drawing graphs, particularly neural networks]]
+- [[http://christopheviau.com/d3list/][Big List of D3.js Examples]]
+- [[http://datascientistinsights.com/2013/10/07/data-repositories-mothers-milk-for-data-scientists/][Data Repositories – Mother’s Milk for Data Scientists]]
+- [[http://faculty.washington.edu/tlumley/tutorials/user-biglm.pdf][Analyzing moderately large data sets]]
+- [[http://darrenjw.wordpress.com/2013/10/04/a-functional-gibbs-sampler-in-scala/][A functional Gibbs sampler in Scala]]
+* R Package of the Week
+- [[https://github.com/hadley/dplyr][dplyr]]
+* Paper of the Week
+- [[http://arxiv.org/abs/1310.2059][Distributed Coordinate Descent Method for Learning with Big Data]]
+- [[http://arxiv.org/abs/1310.1840][Parallel coordinate descent for the Adaboost problem]]
+* Programming
+- [[http://mylinuxbook.com/mmv-a-command-line-utility-to-move-copy-link-append-multiple-files-easily/][Mmv - A Command Line Utility To Move/Copy/Link/Append Multiple Files Easily]]
+

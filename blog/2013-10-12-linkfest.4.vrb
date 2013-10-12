@@ -1,0 +1,5 @@
+\frametitle{Paper of the Week}
+\begin{itemize}
+\item \href{http://arxiv.org/abs/1310.2059}{Distributed Coordinate Descent Method for Learning with Big Data}
+\item \href{http://arxiv.org/abs/1310.1840}{Parallel coordinate descent for the Adaboost problem}
+\end{itemize}

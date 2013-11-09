@@ -4,7 +4,7 @@
   <title><![CDATA[Category: R | Everything Counts]]></title>
   <link href="http://ronert-obst.com/blog/categories/r/atom.xml" rel="self"/>
   <link href="http://ronert-obst.com/"/>
-  <updated>2013-10-20T14:17:06+02:00</updated>
+  <updated>2013-11-09T20:00:55+01:00</updated>
   <id>http://ronert-obst.com/</id>
   <author>
     <name><![CDATA[Ronert Obst]]></name>
@@ -60,7 +60,7 @@ and any packages you require. I wrote a shell script to automate the process:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">!/bin/</span><span style="color: #859900; font-weight: bold;">zsh</span>
+<pre class="src src-sh"><span style="color: #586e75;">#</span><span style="color: #586e75;">!/bin/</span><span style="color: #859900; font-weight: bold;">zsh</span>
 
 starcluster put $<span style="color: #268bd2;">1</span> starcluster.setup.zsh /home/starcluster.setup.zsh
 starcluster put $<span style="color: #268bd2;">1</span> Rpkgs.R /home/Rpkgs.R
@@ -86,16 +86,16 @@ required:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">!/bin/</span><span style="color: #859900; font-weight: bold;">zsh</span>
+<pre class="src src-sh"><span style="color: #586e75;">#</span><span style="color: #586e75;">!/bin/</span><span style="color: #859900; font-weight: bold;">zsh</span>
 
-<span style="color: #657b83; font-weight: bold;">echo</span> <span style="color: #2aa198;">"deb http://stat.ethz.ch/CRAN/bin/linux/ubuntu precise/"</span> &gt;&gt; /etc/apt/sources.list
+<span style="color: #839496; font-weight: bold;">echo</span> <span style="color: #2aa198;">"deb http://stat.ethz.ch/CRAN/bin/linux/ubuntu precise/"</span> &gt;&gt; /etc/apt/sources.list
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 apt-get update
 apt-get install -y r-base r-base-dev
-<span style="color: #657b83; font-weight: bold;">echo</span> &#8220;DONE with Ubuntu package installation on $(hostname -s).&#8221;
+<span style="color: #839496; font-weight: bold;">echo</span> &#8220;DONE with Ubuntu package installation on $(hostname -s).&#8221;
 R CMD BATCH --no-save /home/Rpkgs.R /home/install.Rpkgs.log
-<span style="color: #657b83; font-weight: bold;">echo</span> &#8220;DONE with R package installation on $(hostname -s).&#8221;
+<span style="color: #839496; font-weight: bold;">echo</span> &#8220;DONE with R package installation on $(hostname -s).&#8221;
 </pre>
 </div>
 
@@ -108,7 +108,7 @@ the packages you want installed:
 
 <pre class="src src-sh"><span style="color: #268bd2;">install.packages</span>(c(<span style="color: #2aa198;">"randomForest"</span>, <span style="color: #2aa198;">"caret"</span>, <span style="color: #2aa198;">"mboost"</span>, <span style="color: #2aa198;">"plyr"</span>, <span style="color: #2aa198;">"glmnet"</span>),
  <span style="color: #268bd2;">repos</span> = <span style="color: #2aa198;">"http://cran.cnr.berkeley.edu"</span>)
-<span style="color: #657b83; font-weight: bold;">print</span>(paste(<span style="color: #2aa198;">"DONE with R package installation on "</span>, system(<span style="color: #2aa198;">"hostname -s"</span>, <span style="color: #268bd2;">intern</span> = TRUE), <span style="color: #2aa198;">"."</span>))
+<span style="color: #839496; font-weight: bold;">print</span>(paste(<span style="color: #2aa198;">"DONE with R package installation on "</span>, system(<span style="color: #2aa198;">"hostname -s"</span>, <span style="color: #268bd2;">intern</span> = TRUE), <span style="color: #2aa198;">"."</span>))
 </pre>
 </div>
 

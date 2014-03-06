@@ -94,12 +94,12 @@ Quicksort is a recursive algorithm to sort a list. In Haskell, quicksort looks v
 </p>
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #2075c7;">quicksort</span> <span style="color: #2075c7;">::</span> (<span style="color: #a57705;">Ord</span> a) <span style="color: #2075c7;">=&gt;</span> [a] <span style="color: #2075c7;">-&gt;</span> [a]  
-<span style="color: #2075c7;">quicksort</span> <span style="color: #a57705;">[]</span> <span style="color: #2075c7;">=</span> <span style="color: #a57705;">[]</span>  
-<span style="color: #2075c7;">quicksort</span> (x<span style="color: #a57705;">:</span>xs) <span style="color: #2075c7;">=</span>   
-    <span style="color: #728a05;">let</span> smallerSorted <span style="color: #2075c7;">=</span> quicksort [a <span style="color: #2075c7;">|</span> a <span style="color: #2075c7;">&lt;-</span> xs, a <span style="color: #2075c7;">&lt;=</span> x]  
-        biggerSorted <span style="color: #2075c7;">=</span> quicksort [a <span style="color: #2075c7;">|</span> a <span style="color: #2075c7;">&lt;-</span> xs, a <span style="color: #2075c7;">&gt;</span> x]  
-    <span style="color: #728a05;">in</span>  smallerSorted <span style="color: #2075c7;">++</span> [x] <span style="color: #2075c7;">++</span> biggerSorted
+<pre class="src src-haskell"><span style="color: #268bd2;">quicksort</span> <span style="color: #268bd2;">::</span> (<span style="color: #b58900;">Ord</span> a) <span style="color: #268bd2;">=&gt;</span> [a] <span style="color: #268bd2;">-&gt;</span> [a]  
+<span style="color: #268bd2;">quicksort</span> <span style="color: #b58900;">[]</span> <span style="color: #268bd2;">=</span> <span style="color: #b58900;">[]</span>  
+<span style="color: #268bd2;">quicksort</span> (x<span style="color: #b58900;">:</span>xs) <span style="color: #268bd2;">=</span>   
+    <span style="color: #859900; font-weight: bold;">let</span> smallerSorted <span style="color: #268bd2;">=</span> quicksort [a <span style="color: #268bd2;">|</span> a <span style="color: #268bd2;">&lt;-</span> xs, a <span style="color: #268bd2;">&lt;=</span> x]  
+        biggerSorted <span style="color: #268bd2;">=</span> quicksort [a <span style="color: #268bd2;">|</span> a <span style="color: #268bd2;">&lt;-</span> xs, a <span style="color: #268bd2;">&gt;</span> x]  
+    <span style="color: #859900; font-weight: bold;">in</span>  smallerSorted <span style="color: #268bd2;">++</span> [x] <span style="color: #268bd2;">++</span> biggerSorted
 </pre>
 </div>
 <p>
@@ -109,7 +109,7 @@ takes a list as an input and filters out all elements that are smaller than \(x\
 
 <div class="org-src-container">
 
-<pre class="src src-haskell">ghci<span style="color: #2075c7;">&gt;</span> quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]  
+<pre class="src src-haskell">ghci<span style="color: #268bd2;">&gt;</span> quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]  
 [1,2,2,3,3,4,4,5,6,7,8,9,10]
 </pre>
 </div>
@@ -120,18 +120,18 @@ Using <code>foreach</code>, the same algorithm in R looks like this (from the <c
 
 <div class="org-src-container">
 
-<pre class="src src-r"><span style="color: #259185;">library</span>(foreach)
+<pre class="src src-r"><span style="color: #268bd2; font-weight: bold;">library</span>(foreach)
 
-<span style="color: #2075c7;">qsort</span> <span style="color: #259185;">&lt;-</span> <span style="color: #728a05;">function</span>(x) {
-    n <span style="color: #259185;">&lt;-</span> length(x)
-    <span style="color: #728a05;">if</span> (n == 0) {
-        x
-    } <span style="color: #728a05;">else</span> {
-        p <span style="color: #259185;">&lt;-</span> sample(n, 1)
-        smaller <span style="color: #259185;">&lt;-</span> foreach(y=x[-p], .combine=c) %:% when(y &lt;= x[p]) %do% y
-        larger <span style="color: #259185;">&lt;-</span> foreach(y=x[-p], .combine=c) %:% when(y &gt; x[p]) %do% y
-        c(qsort(smaller), x[p], qsort(larger))
-    }
+<span style="color: #268bd2;">qsort</span> <span style="color: #268bd2; font-weight: bold;">&lt;-</span> <span style="color: #859900; font-weight: bold;">function</span>(x) {
+<span style="color: #839496; background-color: #073642;"> </span>   n <span style="color: #268bd2; font-weight: bold;">&lt;-</span> length(x)
+<span style="color: #839496; background-color: #073642;"> </span>   <span style="color: #859900; font-weight: bold;">if</span> (n == 0) {
+<span style="color: #839496; background-color: #073642;"> </span>   <span style="color: #839496; background-color: #073642;"> </span>   x
+<span style="color: #839496; background-color: #073642;"> </span>   } <span style="color: #859900; font-weight: bold;">else</span> {
+<span style="color: #839496; background-color: #073642;"> </span>   <span style="color: #839496; background-color: #073642;"> </span>   p <span style="color: #268bd2; font-weight: bold;">&lt;-</span> sample(n, 1)
+<span style="color: #839496; background-color: #073642;"> </span>   <span style="color: #839496; background-color: #073642;"> </span>   smaller <span style="color: #268bd2; font-weight: bold;">&lt;-</span> foreach(y=x[-p], .combine=c) %:% when(y &lt;= x[p]) %do% y
+<span style="color: #839496; background-color: #073642;"> </span>   <span style="color: #839496; background-color: #073642;"> </span>   larger <span style="color: #268bd2; font-weight: bold;">&lt;-</span> foreach(y=x[-p], .combine=c) %:% when(y &gt; x[p]) %do% y
+<span style="color: #839496; background-color: #073642;"> </span>   <span style="color: #839496; background-color: #073642;"> </span>   c(qsort(smaller), x[p], qsort(larger))
+<span style="color: #839496; background-color: #073642;"> </span>   }
 }
 </pre>
 </div>
@@ -189,7 +189,7 @@ Not quite as concise as Haskell, but close!
 
 
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2013
+	<footer id="footer" class="inner">Copyright &copy; 2014
 
     Ronert Obst
 

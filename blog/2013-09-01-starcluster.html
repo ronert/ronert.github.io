@@ -160,9 +160,9 @@ gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 apt-get update
 apt-get install -y r-base r-base-dev
-<span style="color: #839496; font-weight: bold;">echo</span> &#8220;DONE with Ubuntu package installation on $(hostname -s).&#8221;
+<span style="color: #839496; font-weight: bold;">echo</span> &#8220;DONE with Ubuntu package installation on $(<span style="color: #6c71c4; font-weight: bold;">hostname</span> -s)<span style="color: #839496; font-weight: bold;">.</span>&#8221;
 R CMD BATCH --no-save /home/Rpkgs.R /home/install.Rpkgs.log
-<span style="color: #839496; font-weight: bold;">echo</span> &#8220;DONE with R package installation on $(hostname -s).&#8221;
+<span style="color: #839496; font-weight: bold;">echo</span> &#8220;DONE with R package installation on $(<span style="color: #6c71c4; font-weight: bold;">hostname</span> -s)<span style="color: #839496; font-weight: bold;">.</span>&#8221;
 </pre>
 </div>
 
@@ -174,8 +174,8 @@ the packages you want installed:
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #268bd2;">install.packages</span>(c(<span style="color: #2aa198;">"randomForest"</span>, <span style="color: #2aa198;">"caret"</span>, <span style="color: #2aa198;">"mboost"</span>, <span style="color: #2aa198;">"plyr"</span>, <span style="color: #2aa198;">"glmnet"</span>),
- <span style="color: #268bd2;">repos</span> = <span style="color: #2aa198;">"http://cran.cnr.berkeley.edu"</span>)
-<span style="color: #839496; font-weight: bold;">print</span>(paste(<span style="color: #2aa198;">"DONE with R package installation on "</span>, system(<span style="color: #2aa198;">"hostname -s"</span>, <span style="color: #268bd2;">intern</span> = TRUE), <span style="color: #2aa198;">"."</span>))
+ repos = <span style="color: #2aa198;">"http://cran.cnr.berkeley.edu"</span>)
+<span style="color: #268bd2;">print</span>(paste(<span style="color: #2aa198;">"DONE with R package installation on "</span>, system(<span style="color: #2aa198;">"hostname -s"</span>, intern = TRUE), <span style="color: #2aa198;">"."</span>))
 </pre>
 </div>
 
@@ -259,7 +259,7 @@ Now you can watch 10 machines working for you. Like!
 
 
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2013
+	<footer id="footer" class="inner">Copyright &copy; 2014
 
     Ronert Obst
 
